@@ -1,0 +1,30 @@
+Arus yang Mengangkat — Fluida Dinamis (Fisika Umum) · SCIENTIAN
+
+00:00 Pembuka: oven microwave & teleskop radio
+00:52 Peta video
+
+BAGIAN 1 · Prinsip & teori dasar
+01:30 Bab 01 · Fluida ideal & garis arus
+02:19 Bab 02 · Laminar atau turbulen
+03:13 Bab 03 · Debit: seberapa deras
+03:55 Bab 04 · Kontinuitas: jempol di ujung selang
+04:50 Bab 05 · Mengapa yang cepat bertekanan rendah
+05:39 Bab 06 · Persamaan Bernoulli
+06:27 Bab 07 · Venturimeter: kecepatan dari tekanan
+07:19 Bab 08 · Torricelli: lubang di dinding tangki
+08:19 Bab 09 · Gaya angkat sayap
+09:12 Bab 10 · Kekentalan & hukum Poiseuille
+09:56 Bab 11 · Cara berpikir: soal fluida dinamis
+
+BAGIAN 2 · Implementasi dalam kimia
+11:02 Bab 12 · Pompa vakum air
+11:49 Bab 13 · Pembakar Bunsen
+12:26 Bab 14 · Nebulizer spektrometer
+13:04 Bab 15 · Viskometer Ostwald
+
+BAGIAN 3 · Penerapan di industri
+13:52 Bab 16 · Pembuluh darah yang menyempit
+14:33 Bab 17 · Kapal yang berpapasan
+15:11 Bab 18 · Atap yang terangkat badai
+
+16:00 Bab 19 · Rangkuman
