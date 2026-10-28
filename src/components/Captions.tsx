@@ -46,10 +46,24 @@ export const Captions: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
-  const page = PAGES.find((p) => t >= p.start && t < p.end);
-  if (!page) return null;
+  const idx = PAGES.findIndex((p) => t >= p.start && t < p.end);
+  if (idx < 0) return null;
+  const page = PAGES[idx];
   const pin = page.contIn ? 1 : ramp(t, page.start, page.start + 0.25);
   const pout = page.contOut ? 1 : 1 - ramp(t, page.end - 0.25, page.end, EASE_IN_OUT);
+  // Pergantian halaman yang menyambung: halaman lama (teks + kapsul) memudar ±0,2 dtk
+  // sementara kata halaman baru muncul — tidak ada lagi teks yang lenyap dalam 1 frame.
+  const prev = page.contIn && idx > 0 ? PAGES[idx - 1] : null;
+  const ghost = prev ? 1 - ramp(t, page.start, page.start + 0.16, (x) => 1 - (1 - x) * (1 - x)) : 0;
+  return (
+    <>
+      {prev && ghost > 0.001 ? <PageText page={prev} t={t} opacity={ghost} ghost /> : null}
+      <PageText page={page} t={t} opacity={pin * pout} lift={1 - pin} />
+    </>
+  );
+};
+
+const PageText: React.FC<{page: Page; t: number; opacity: number; lift?: number; ghost?: boolean}> = ({page, t, opacity, lift = 0, ghost}) => {
   return (
     <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 64, pointerEvents: 'none'}}>
       <div
@@ -61,8 +75,8 @@ export const Captions: React.FC = () => {
           fontWeight: 500,
           lineHeight: 1.34,
           letterSpacing: -0.2,
-          opacity: pin * pout,
-          translate: `0px ${(1 - pin) * 10}px`,
+          opacity,
+          translate: `0px ${lift * 10}px`,
           padding: '10px 30px 12px',
           borderRadius: 22,
           background: 'rgba(6,10,24,0.78)',
@@ -73,7 +87,7 @@ export const Captions: React.FC = () => {
         {page.words.map((w, i) => {
           const spoken = ramp(t, w.start - 0.04, w.start + 0.14);
           const active = Math.min(ramp(t, w.start - 0.06, w.start + 0.08), 1 - ramp(t, w.end, w.end + 0.18, EASE_IN_OUT));
-          const appear = ramp(t, page.start + i * 0.02, page.start + i * 0.02 + 0.3);
+          const appear = ghost ? 1 : ramp(t, page.start + i * 0.02, page.start + i * 0.02 + 0.3);
           return (
             <span
               key={i}

@@ -590,8 +590,11 @@ export const Hook: React.FC = () => {
             <Pipe x0={KP.x0} x1={KP.x1} yc={KP.yc} knots={KNOTS} v0={110} lanes={7} perLane={6} />
             <Arrow x1={880} y1={KP.yc + 110} x2={1040} y2={KP.yc + 110} color="cyan" width={6} opacity={fast} />
             <Arrow x1={440} y1={KP.yc + 140} x2={500} y2={KP.yc + 140} color="cyan" width={5} opacity={fast * 0.8} />
-            <Label x={960} y={KP.yc + 160} size={34} weight={700} color={C.cyan} opacity={fast}>
-              lebih cepat
+            <Label x={960} y={KP.yc + 148} size={30} color={C.cyan} opacity={fast} font="serif" italic>
+              v besar
+            </Label>
+            <Label x={470} y={KP.yc + 172} size={28} color={C.cyan} opacity={fast * 0.8} font="serif" italic>
+              v kecil
             </Label>
             <Arrow x1={1030} y1={260} x2={1030} y2={380} color="press" width={6} opacity={drop} />
             <Label x={1056} y={300} size={34} weight={700} color={C.press} anchor="start" opacity={drop}>
@@ -662,19 +665,17 @@ export const Hook: React.FC = () => {
         </div>
       ) : null}
       {E > 0.001 ? (
-        <div style={{position: 'absolute', left: 1080, top: 400, width: 720, fontFamily: FONT.head, opacity: E}}>
-          <div style={{position: 'relative', height: 160}}>
-            <div style={{position: 'absolute', inset: 0, opacity: 1 - dyn}}>
-              <div style={{fontFamily: FONT.mono, fontSize: 24, letterSpacing: 4, color: C.muted}}>VIDEO SEBELUMNYA</div>
-              <div style={{fontSize: 66, fontWeight: 700, color: C.ink}}>
-                fluida <span style={{color: C.press}}>diam</span>
-              </div>
+        <div style={{position: 'absolute', left: 1090, top: 410, width: 720, fontFamily: FONT.head, opacity: E}}>
+          <div style={{opacity: 1 - 0.55 * dyn}}>
+            <div style={{fontFamily: FONT.mono, fontSize: 24, letterSpacing: 4, color: C.muted}}>VIDEO SEBELUMNYA</div>
+            <div style={{fontSize: 60, fontWeight: 700, color: C.ink}}>
+              fluida <span style={{color: C.press}}>diam</span>
             </div>
-            <div style={{position: 'absolute', inset: 0, opacity: dyn, translate: `${(1 - dyn) * 20}px 0px`}}>
-              <div style={{fontFamily: FONT.mono, fontSize: 24, letterSpacing: 4, color: C.cyan}}>SEKARANG</div>
-              <div style={{fontSize: 66, fontWeight: 700, color: C.ink}}>
-                fluida <span style={{color: C.cyan}}>bergerak</span>
-              </div>
+          </div>
+          <div style={{marginTop: 34, opacity: dyn, translate: `${(1 - dyn) * 24}px 0px`}}>
+            <div style={{fontFamily: FONT.mono, fontSize: 24, letterSpacing: 4, color: C.cyan}}>SEKARANG</div>
+            <div style={{fontSize: 72, fontWeight: 700, color: C.ink}}>
+              fluida <span style={{color: C.cyan}}>bergerak</span>
             </div>
           </div>
         </div>
