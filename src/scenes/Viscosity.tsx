@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolateColors} from 'remotion';
-import {EASE_IN_OUT, cyc, ramp, rand, win} from '../anim';
+import {EASE_IN_OUT, cyc, ramp, rand} from '../anim';
 import {Water} from '../components/fluid';
 import {Arrow, Card, Frac, Glow, Label, Motes, Note, Ripple, Stage, Sup, Tint, Twinkles, V} from '../components/primitives';
 import {useScene} from '../SceneContext';
@@ -111,7 +111,7 @@ const Cylinder: React.FC<{x: number; yTop: number; yBot: number; level: number; 
 );
 
 export const Viscosity: React.FC = () => {
-  const {t, cue, cueEnd, wordOf} = useScene();
+  const {t, cue, wordOf} = useScene();
 
   // ---------- fase A: madu vs air ----------
   const aIn = ramp(t, -0.2, 1.0);
@@ -126,7 +126,7 @@ export const Viscosity: React.FC = () => {
   // ---------- fase B: profil parabola ----------
   const bIn = ramp(t, cue(2) - 0.3, cue(2) + 0.6);
   const bOut = 1 - ramp(t, cue(4) - 0.5, cue(4) + 0.3, EASE_IN_OUT);
-  const PB = {x0: 140, x1: 1220, yc: 480, R: 150, vmax: 230};
+  const PB = {x0: 140, x1: 1520, yc: 610, R: 150, vmax: 300};
   const wallLbl = ramp(t, wordOf(2, 'diam') - 0.3, wordOf(2, 'diam') + 0.5);
   const midLbl = ramp(t, wordOf(2, 'tengah') - 0.3, wordOf(2, 'tengah') + 0.5);
   const para = ramp(t, wordOf(2, 'parabola') - 0.5, wordOf(2, 'parabola') + 0.6);
@@ -227,10 +227,10 @@ export const Viscosity: React.FC = () => {
               </g>
             );
           })()}
-          <Label x={HX - 60} y={212} size={30} color={HONEY} weight={600}>
+          <Label x={HX + 40} y={232} size={30} color={HONEY} weight={600} anchor="start">
             madu
           </Label>
-          <Label x={WX - 60} y={212} size={30} color={C.water} weight={600}>
+          <Label x={WX + 40} y={232} size={30} color={C.water} weight={600} anchor="start">
             air
           </Label>
           <g opacity={vals}>
@@ -310,7 +310,7 @@ export const Viscosity: React.FC = () => {
           </g>
           <Motes x={620} y={540} rx={440} ry={300} n={16} color="kin" opacity={0.3} seed={4} />
         </Stage>
-        <Card x={1440} y={300} opacity={Math.min(1, etaCard * 1.4) * (1 - 0.0 * vals)} scale={0.94 + 0.06 * etaCard} accent={C.heat} style={{padding: '16px 36px'}}>
+        <Card x={1440} y={300} opacity={Math.min(1, etaCard * 1.4)} scale={0.94 + 0.06 * etaCard} accent={C.heat} style={{padding: '16px 36px'}}>
           <div style={{display: 'flex', alignItems: 'center', gap: 26}}>
             <div style={{fontFamily: FONT.serif, fontStyle: 'italic', fontSize: 92, lineHeight: 1, color: C.heat}}>η</div>
             <div style={{fontFamily: FONT.head, fontSize: 30, lineHeight: 1.3}}>
@@ -332,8 +332,8 @@ export const Viscosity: React.FC = () => {
           {/* profil kecepatan */}
           <g opacity={prof}>
             {(() => {
-              const xs = 940;
-              const sc = 0.95;
+              const xs = 1180;
+              const sc = 0.8;
               const pts = Array.from({length: 31}, (_, i) => {
                 const f = -1 + (2 * i) / 30;
                 return [xs + PB.vmax * sc * (1 - f * f), PB.yc + f * PB.R] as [number, number];
@@ -361,12 +361,12 @@ export const Viscosity: React.FC = () => {
             </Label>
           </g>
           <g opacity={midLbl}>
-            <Label x={940 + 236} y={PB.yc - 26} size={26} color={C.cyan} weight={700} anchor="start">
+            <Label x={1180 + 252} y={PB.yc - 34} size={26} color={C.cyan} weight={700} anchor="start">
               maks
             </Label>
           </g>
           <g opacity={para}>
-            <Label x={940 + 120} y={PB.yc + PB.R + 50} size={30} color={C.gold} weight={700}>
+            <Label x={1180 + 130} y={PB.yc + PB.R + 50} size={30} color={C.gold} weight={700}>
               profil parabola
             </Label>
           </g>
@@ -378,7 +378,7 @@ export const Viscosity: React.FC = () => {
               r
             </Label>
           </g>
-          <Motes x={680} y={PB.yc} rx={560} ry={200} n={14} color="cyan" opacity={0.3} seed={7} />
+          <Motes x={830} y={PB.yc} rx={700} ry={200} n={14} color="cyan" opacity={0.3} seed={7} />
         </Stage>
       </AbsoluteFill>
 
@@ -509,7 +509,7 @@ export const Viscosity: React.FC = () => {
       </AbsoluteFill>
 
       {/* kartu Poiseuille (fase B–C) */}
-      <Card x={1560} y={300} opacity={Math.min(1, fml * 1.4) * fmlOut} scale={0.94 + 0.06 * fml} accent={C.water} style={{padding: '18px 36px'}}>
+      <Card x={1560} y={282} opacity={Math.min(1, fml * 1.4) * fmlOut} scale={0.94 + 0.06 * fml} accent={C.water} style={{padding: '18px 36px'}}>
         <div style={{fontFamily: FONT.serif, fontSize: 60, lineHeight: 1.3, textAlign: 'center', whiteSpace: 'nowrap'}}>
           <Tint c={C.water}>
             <V>Q</V>
@@ -551,8 +551,6 @@ export const Viscosity: React.FC = () => {
           <Twinkles x={1560} y={520} rx={200} ry={40} n={4} opacity={sixteen} seed={6} />
         </Stage>
       </AbsoluteFill>
-      {cueEnd(5) < 0 ? <Motes x={0} y={0} rx={1} ry={1} /> : null}
-      {win(t, 0, 0) > 2 ? null : null}
     </AbsoluteFill>
   );
 };

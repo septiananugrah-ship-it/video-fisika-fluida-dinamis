@@ -84,7 +84,7 @@ const chunkPath = (xa: number, xb: number) => {
 // ---------- fase B ----------
 const HX0 = 170;
 const HX1 = 866;
-const HYC = 560;
+const HYC = 600;
 const HK: Knot[] = [
   [HX0, 30],
   [740, 30],
@@ -263,11 +263,11 @@ export const Continuity: React.FC = () => {
               return <ellipse key={k} cx={land} cy={FLOOR + 4} rx={20 + 70 * ph} ry={4 + 9 * ph} fill="none" stroke="#cfeaff" strokeWidth={2} opacity={0.6 * cyc(ph)} />;
             })}
             {/* keran di dinding */}
-            <rect x={90} y={470} width={16} height={180} rx={4} fill="#1a2550" stroke={C.muted} strokeWidth={2} />
-            <rect x={104} y={534} width={70} height={52} rx={10} fill="#2b3766" stroke="#c9d3f0" strokeWidth={2.5} />
-            <g transform={`rotate(${40 * Math.sin(Math.min(1, hoseIn) * Math.PI * 0.5)} 138 520)`}>
-              <rect x={134} y={500} width={8} height={36} fill="#c9d3f0" />
-              <rect x={112} y={494} width={52} height={12} rx={6} fill={C.heat} opacity={0.85} />
+            <rect x={90} y={HYC - 90} width={16} height={180} rx={4} fill="#1a2550" stroke={C.muted} strokeWidth={2} />
+            <rect x={104} y={HYC - 26} width={70} height={52} rx={10} fill="#2b3766" stroke="#c9d3f0" strokeWidth={2.5} />
+            <g transform={`rotate(${40 * Math.sin(Math.min(1, hoseIn) * Math.PI * 0.5)} 138 ${HYC - 40})`}>
+              <rect x={134} y={HYC - 60} width={8} height={36} fill="#c9d3f0" />
+              <rect x={112} y={HYC - 66} width={52} height={12} rx={6} fill={C.heat} opacity={0.85} />
             </g>
             <Pipe x0={HX0} x1={HX1} yc={HYC} knots={HK} v0={512 * (18 / 30) ** 2} lanes={3} perLane={9} wall={C.buoy} lines={0.2} seed={4} />
             {/* nosel kuningan */}
@@ -291,7 +291,7 @@ export const Continuity: React.FC = () => {
                   <path d="M6,-6 Q22,-6 22,-24 L22,-60 Q14,-66 6,-60 Z" fill="#f8dccb" opacity={0.95} />
                   <path d="M-24,-118 Q-6,-112 14,-120" fill="none" stroke="#a86f4f" strokeWidth={2.5} strokeLinecap="round" />
                 </g>
-                <Label x={HX1 + 170} y={380} size={26} color="#ffd9bd" weight={600}>
+                <Label x={HX1 - 70} y={HYC - 90} size={26} color="#ffd9bd" weight={600}>
                   jempol
                 </Label>
               </g>
@@ -433,7 +433,7 @@ export const Continuity: React.FC = () => {
         <V color={C.cyan}>v</V>
         <Sub>2</Sub>
       </Formula>
-      <Formula x={1270} y={290} p={fNoz * phB} accent={C.cyan} size={56} caption="Q = 0,5 L/s = 5 × 10⁻⁴ m³/s">
+      <Formula x={1450} y={262} p={fNoz * phB} accent={C.cyan} size={56} caption="Q = 0,5 L/s = 5 × 10⁻⁴ m³/s">
         <V color={C.cyan}>v</V> = <Frac n={<V color={C.water}>Q</V>} d={<V color={C.water}>A</V>} /> ={' '}
         <Frac
           n={
@@ -449,7 +449,7 @@ export const Continuity: React.FC = () => {
         />{' '}
         = <span style={{color: C.cyan, opacity: fNozNum}}>2,5 m/s</span>
       </Formula>
-      <Formula x={1270} y={290} p={f4 * phB} accent={C.gold} size={58} caption="debit tetap: air yang sama harus keluar tiap detik">
+      <Formula x={1450} y={262} p={f4 * phB} accent={C.gold} size={58} caption="debit tetap: air yang sama harus keluar tiap detik">
         <V color={C.water}>A</V> ÷ 4 <span style={{opacity: f5}}>→ </span>
         <span style={{opacity: f5}}>
           <V color={C.cyan}>v</V> × 4 = <span style={{color: C.cyan, opacity: 0.3 + 0.7 * f5num}}>10 m/s</span>

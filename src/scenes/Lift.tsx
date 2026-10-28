@@ -13,7 +13,7 @@ import {C, FONT} from '../theme';
 // Angka (AUDIT): 70 000 kg · 10 / 120 m² ≈ 5800 Pa, < 6 % dari 100 kPa; 5800 Pa × 120 m² ≈ 700 000 N.
 
 // ---------- geometri sayap ----------
-const AF = {lex: 430, ley: 468, c: 760, a: (7 * Math.PI) / 180};
+const AF = {lex: 430, ley: 515, c: 760, a: (7 * Math.PI) / 180};
 const NS = 48;
 const nacaPt = (u: number, upper: boolean): [number, number] => {
   const m = 0.045;
@@ -63,7 +63,7 @@ const HB = GX.map((_, i) => {
   }
   return Math.max(HT[i], s / w);
 });
-const Y0 = 510;
+const Y0 = 556;
 const smooth = (a: number, b: number, x: number) => {
   const u = Math.max(0, Math.min(1, (x - a) / (b - a)));
   return u * u * (3 - 2 * u);
@@ -225,7 +225,7 @@ export const Lift: React.FC = () => {
   const planeIn = ramp(t, cue(4) - 0.4, cue(4) + 0.8);
   const mLbl = ramp(t, wordOf(4, 'tujuh') - 0.2, wordOf(4, 'tujuh') + 0.6);
   const aLbl = ramp(t, wordOf(4, 'seratus') - 0.2, wordOf(4, 'seratus') + 0.6);
-  const f1 = ramp(t, cueEnd(4) - 0.8, cueEnd(4) + 0.2);
+  const f1 = ramp(t, wordOf(4, 'luas') - 0.2, wordOf(4, 'luas') + 0.7);
   const f2 = ramp(t, wordOf(5, 'lima') - 0.2, wordOf(5, 'lima') + 0.6);
   const bars = ramp(t, wordOf(5, 'kurang') - 0.4, wordOf(5, 'kurang') + 0.8);
   const pct = ramp(t, wordOf(5, 'persen') - 0.2, wordOf(5, 'persen') + 0.6);
@@ -375,7 +375,7 @@ export const Lift: React.FC = () => {
             </g>
             <Twinkles x={XTE + 60} y={topAt(XTE - 30) - 60} rx={110} ry={40} n={4} opacity={arrU * (1 - arrL * 0.5)} seed={4} />
           </g>
-          <Motes x={960} y={480} rx={820} ry={320} n={22} color="cyan" opacity={0.3} seed={11} />
+          <Motes x={960} y={530} rx={820} ry={320} n={22} color="cyan" opacity={0.3} seed={11} />
         </Stage>
         {/* kartu mitos */}
         <Card x={1440} y={238} opacity={mythCard} accent={C.heat} style={{padding: '16px 30px'}}>

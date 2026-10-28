@@ -352,13 +352,13 @@ const CapInset: React.FC<{x: number; y: number; r: number; ax: number; ay: numbe
 /** Batang waktu alir air vs X (tumbuh bersama stopwatch). */
 const TimeBars: React.FC<{x: number; y: number; tw: number; tx: number; op: number}> = ({x, y, tw, tx, op}) => {
   if (op <= 0.001) return null;
-  const k = 520 / 90;
+  const k = 440 / 90;
   const row = (yy: number, v: number, c: string, name: string) => (
     <g>
       <text x={x} y={yy} dominantBaseline="central" fontFamily={FONT.head} fontSize={26} fill={c}>
         {name}
       </text>
-      <rect x={x + 110} y={yy - 16} width={520} height={32} rx={16} fill={c} opacity={0.1} />
+      <rect x={x + 110} y={yy - 16} width={440} height={32} rx={16} fill={c} opacity={0.1} />
       <rect x={x + 110} y={yy - 16} width={Math.max(0, v * k)} height={32} rx={16} fill={c} opacity={0.85} />
       <text x={x + 120 + v * k} y={yy} dominantBaseline="central" fontFamily={FONT.mono} fontSize={24} fontWeight={600} fill={C.ink} style={{paintOrder: 'stroke', stroke: 'rgba(7,11,24,0.9)', strokeWidth: 5}}>
         {fmt1(v)} s

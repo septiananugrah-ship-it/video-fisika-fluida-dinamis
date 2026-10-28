@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {EASE_IN_OUT, cyc, ramp, rand} from '../anim';
-import {Water} from '../components/fluid';
+import {Pipe, Streamline} from '../components/flow';
 import {Glow, Motes, Spark, Stage, Twinkles} from '../components/primitives';
 import {BRAND} from '../brand';
 import {useScene} from '../SceneContext';
@@ -20,7 +20,7 @@ const REFS = [
 const ORBIT: {hue: Hue; ph: number}[] = [
   {hue: 'water', ph: 0},
   {hue: 'press', ph: 1.05},
-  {hue: 'buoy', ph: 2.09},
+  {hue: 'kin', ph: 2.09},
   {hue: 'force', ph: 3.14},
   {hue: 'spr', ph: 4.19},
   {hue: 'cyan', ph: 5.24},
@@ -35,29 +35,52 @@ const orbitPt = (a: number): [number, number] => {
   return [OC.x + ex * c - ey * s, OC.y + ex * s + ey * c];
 };
 
-/** Motif tangki kecil: air bergelombang, balok terapung bergoyang (gaya apung vs berat), gelembung. */
-const TankMotif: React.FC<{x: number; y: number; t: number; seed: number; opacity: number}> = ({x, y, t, seed, opacity}) => {
-  const w = 210;
-  const h = 170;
-  const lvl = 110;
-  const bob = 4 * Math.sin(t * 1.3 + seed);
-  const bx = x + w / 2 + 20 * Math.sin(t * 0.35 + seed);
-  const top = y - lvl - 30 + bob;
+/** Motif venturi kecil: pipa menyempit dengan partikel (kontinuitas), kolom tekanan lebih rendah di bagian sempit, garis arus. */
+const VenturiMotif: React.FC<{x: number; y: number; t: number; seed: number; opacity: number; flip?: boolean}> = ({x, y, t, seed, opacity, flip}) => {
+  if (opacity <= 0.001) return null;
+  const w = 240;
+  const yc = y - 40;
+  const knots: [number, number][] = [
+    [x, 26],
+    [x + 70, 26],
+    [x + 110, 11],
+    [x + 150, 11],
+    [x + 200, 26],
+    [x + w, 26],
+  ];
+  const wob = 3 * Math.sin(t * 1.7 + seed);
+  const cols = [
+    {cx: x + 40, h: 92 + wob},
+    {cx: x + 130, h: 38 + wob * 0.6},
+    {cx: x + 220, h: 86 + wob},
+  ];
   return (
-    <g opacity={opacity}>
-      <Water x={x + 5} y={y - lvl} w={w - 10} h={lvl - 5} amp={3} bubbles={5} seed={seed} />
-      <rect x={bx - 32} y={top} width={64} height={46} rx={6} fill="url(#crate)" stroke={C.buoy} strokeWidth={2} transform={`rotate(${3 * Math.sin(t * 0.9 + seed)} ${bx} ${top + 23})`} />
-      <line x1={bx} y1={top + 10} x2={bx} y2={top - 34} stroke={C.buoy} strokeWidth={4} markerEnd="url(#arrow-buoy)" />
-      <path d={`M${x},${y - h} L${x},${y} L${x + w},${y} L${x + w},${y - h}`} fill="none" stroke="#bfe3ff" strokeOpacity={0.6} strokeWidth={4} strokeLinejoin="round" />
-      {[0, 1, 2, 3].map((k) => {
-        const yy = y - 20 - k * 22;
-        return <line key={k} x1={x + w - 4} y1={yy} x2={x + w - 4 - (8 + k * 0)} y2={yy} stroke={C.muted} strokeWidth={2} opacity={0.6} />;
-      })}
+    <g opacity={opacity} transform={flip ? `translate(${2 * x + w} 0) scale(-1 1)` : undefined}>
+      <Glow x={x + 130} y={yc} r={150} color="water" opacity={0.5} />
+      {/* garis arus di atas & bawah pipa */}
+      {[-70, 60].map((dy, i) => (
+        <Streamline
+          key={dy}
+          pts={Array.from({length: 13}, (_, k) => [x - 30 + (k * (w + 60)) / 12, yc + dy - Math.sign(dy) * 10 * Math.exp(-(((k - 6) / 2.5) ** 2))] as [number, number])}
+          speed={70}
+          n={4}
+          color={i ? C.cyan : '#cfeaff'}
+          line={0.15}
+          seed={seed + i}
+        />
+      ))}
+      {cols.map((c) => (
+        <g key={c.cx}>
+          <rect x={c.cx - 6} y={yc - 26 - 104} width={12} height={104} fill="#0d1838" stroke="#bfe3ff" strokeOpacity={0.6} strokeWidth={2} />
+          <rect x={c.cx - 4} y={yc - 26 - c.h} width={8} height={c.h} fill={C.press} opacity={0.75} />
+        </g>
+      ))}
+      <Pipe x0={x} x1={x + w} yc={yc} knots={knots} v0={55} lanes={3} perLane={5} lines={0.35} seed={seed} />
     </g>
   );
 };
 
-/** Penutup: logo SCIENTIAN, tagline, nama penyusun, rujukan, dan seri berikutnya. */
+/** Penutup: logo SCIENTIAN, tagline, nama penyusun, rujukan, dan seri berikutnya (motif aliran). */
 export const Outro: React.FC = () => {
   const {t, dur} = useScene();
   const logo = ramp(t, 0.2, 1.6);
@@ -90,23 +113,25 @@ export const Outro: React.FC = () => {
         <Glow x={960} y={240} r={440} color="cyan" opacity={0.35 * logo} />
         <Glow x={960} y={188} r={200} color="water" opacity={0.3 * logo} />
         <Motes x={960} y={300} rx={620} ry={260} n={40} color="cyan" opacity={0.45 * logo} seed={13} />
-        {/* gelembung naik di seluruh layar */}
-        {Array.from({length: 22}, (_, k) => {
-          const p = ((((t + rand(k * 3.1) * 12) / (8 + 5 * rand(k))) % 1) + 1) % 1;
-          const r = 3 + 7 * rand(k * 1.7);
-          const x = 100 + rand(k * 5.3) * 1720 + 12 * Math.sin(t * 1.2 + k);
-          const y = 1020 - p * 900;
+        {/* butir aliran yang hanyut pelan mengikuti garis arus bergelombang */}
+        {Array.from({length: 24}, (_, k) => {
+          const p = ((((t + rand(k * 3.1) * 14) / (10 + 5 * rand(k))) % 1) + 1) % 1;
+          const x = -40 + p * 2000;
+          const base = 140 + rand(k * 5.3) * 780;
+          const y = base + 26 * Math.sin(x * 0.004 + k);
+          const tail = 18 + 20 * rand(k * 1.7);
+          const yb = base + 26 * Math.sin((x - tail) * 0.004 + k);
           return (
-            <g key={k} opacity={cyc(p) * 0.35 * logo}>
-              <circle cx={x} cy={y} r={r} fill="none" stroke="#cfeaff" strokeWidth={1.4} />
-              <circle cx={x - r * 0.35} cy={y - r * 0.35} r={r * 0.28} fill="#fff" opacity={0.7} />
+            <g key={k} opacity={cyc(p) * 0.4 * logo}>
+              <line x1={x - tail} y1={yb} x2={x} y2={y} stroke="#cfeaff" strokeWidth={2} strokeLinecap="round" opacity={0.6} />
+              <circle cx={x} cy={y} r={2.4} fill="#fff" />
             </g>
           );
         })}
         <path d={ellipseD} fill="none" stroke={C.cyan} strokeOpacity={0.18 * orbitOn} strokeWidth={1.5} strokeDasharray="4 10" strokeDashoffset={-t * 14} />
         {ring(false)}
-        <TankMotif x={130} y={870} t={t} seed={0.4} opacity={0.45 * motif} />
-        <TankMotif x={1580} y={870} t={t} seed={2.3} opacity={0.45 * motif} />
+        <VenturiMotif x={110} y={860} t={t} seed={0.4} opacity={0.55 * motif} />
+        <VenturiMotif x={1570} y={860} t={t} seed={2.3} opacity={0.55 * motif} flip />
         <Twinkles x={960} y={530} rx={360} ry={30} n={4} color="gold" opacity={by * 0.7} seed={17} />
       </Stage>
       <AbsoluteFill style={{alignItems: 'center', paddingTop: 70}}>
@@ -136,7 +161,7 @@ export const Outro: React.FC = () => {
               </div>
             );
           })}
-          <div style={{marginTop: 12, fontFamily: FONT.sans, fontSize: 18, color: C.faint, opacity: ramp(t, 5.2, 6.0)}}>
+          <div style={{marginTop: 12, fontFamily: FONT.sans, fontSize: 19, color: C.muted, opacity: 0.85 * ramp(t, 5.2, 6.0)}}>
             Ilustrasi skematis · g = 10 m/s², ρ air = 1000 kg/m³, ρ udara ≈ 1,2 kg/m³ · model fluida ideal kecuali pada bagian kekentalan
           </div>
         </div>
