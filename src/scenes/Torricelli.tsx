@@ -78,9 +78,9 @@ export const Torricelli: React.FC = () => {
   const lph = ((((t - cue(2)) / 3) % 1) + 1) % 1;
   const ease = 0.5 - 0.5 * Math.cos(Math.PI * Math.min(1, lph / 0.8));
   const LP: [number, number][] = [
-    [520, ys + 26],
-    [520, 470],
-    [610, YH],
+    [470, ys + 26],
+    [470, 500],
+    [560, YH],
     [HX - 10, YH],
   ];
   const bz = (a: number, b: number, c: number, d: number, u: number) => (1 - u) ** 3 * a + 3 * (1 - u) ** 2 * u * b + 3 * (1 - u) * u * u * c + u ** 3 * d;
@@ -310,6 +310,7 @@ export const Torricelli: React.FC = () => {
       </Stage>
 
       {/* ---------- kartu HTML ---------- */}
+      <Badge x={1290} y={270} text="tangki terbuka · lubang kecil di dinding" color={C.water} opacity={win(t, wordOf(0, 'tangki') - 0.3, wordOf(1, 'terbuka') - 0.6, 0.6, 0.4)} size={30} />
       <Note x={1290} y={270} p={pAtm * (1 - f2)} color={C.press} size={32}>
         <V color={C.press}>p</V>
         <Sub>1</Sub> = <V color={C.press}>p</V>
