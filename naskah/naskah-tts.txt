@@ -1,0 +1,135 @@
+hook-00	Tutup sebagian ujung selang dengan jempol, dan air tiba-tiba menyembur jauh lebih jauh.
+hook-01	Tiup udara di antara dua lembar kertas yang tergantung. Kertasnya tidak terdorong menjauh, justru saling merapat.
+hook-02	Dan sebuah pesawat seberat tujuh puluh ton melayang di udara, ditopang oleh sesuatu yang tak terlihat.
+hook-03	Tiga kejadian ini tampak tak berhubungan.
+hook-04	Padahal semuanya diatur oleh satu gagasan yang sama:
+hook-05	ketika fluida mengalir lebih cepat, tekanannya justru turun.
+hook-06	Di video sebelumnya kita belajar fluida yang diam. Sekarang, fluidanya bergerak.
+roadmap-00	Video ini membahas fluida dinamis, yaitu fluida yang mengalir, dalam tiga bagian.
+roadmap-01	Bagian pertama, konsep dan cara berpikir: fluida ideal, garis arus, debit, kontinuitas, Bernuli, Toriceli, gaya angkat, dan kekentalan.
+roadmap-02	Bagian kedua, fluida mengalir di laboratorium kimia: pompa vakum air, pembakar Bunsen, nebulizer, dan viskometer.
+roadmap-03	Bagian ketiga, penerapan: pembuluh darah, kapal yang berpapasan, dan atap yang terangkat badai.
+ideal-00	Aliran fluida yang nyata sangat rumit: berputar, bergolak, dan saling bergesekan.
+ideal-01	Agar bisa dipahami, fisikawan memakai model fluida ideal dengan empat anggapan.
+ideal-02	Tak termampatkan: massa jenisnya tetap. Tak kental: tidak ada gesekan di dalamnya.
+ideal-03	Alirannya tunak: kecepatan di setiap titik tidak berubah terhadap waktu. Dan alirannya tidak berpusar.
+ideal-04	Lintasan partikel-partikel fluida digambarkan sebagai garis arus.
+ideal-05	Garis arus tidak pernah berpotongan. Di tempat garis-garisnya merapat, aliran lebih cepat.
+ideal-06	Udara pun boleh dianggap tak termampatkan, selama kecepatannya jauh di bawah kecepatan suara.
+flow-00	Perhatikan asap dupa yang naik di udara yang tenang.
+flow-01	Mula-mula asap naik dalam garis-garis halus yang rapi. Ini aliran laminar.
+flow-02	Lalu tiba-tiba asap pecah menjadi pusaran yang kacau. Ini aliran turbulen.
+flow-03	Penentunya adalah bilangan Reinolds: massa jenis kali kecepatan kali diameter, dibagi kekentalan.
+flow-04	Di dalam pipa, aliran cenderung laminar bila bilangan Reinolds di bawah sekitar dua ribu, dan turbulen bila jauh di atasnya.
+flow-05	Air keran dalam pipa dua sentimeter yang mengalir satu meter per detik sudah bernilai sekitar dua puluh ribu: turbulen.
+flow-06	Rumus-rumus di video ini dibangun dari model ideal yang tenang dan rapi, dan tetap menjadi pendekatan pertama yang sangat berguna.
+debit-00	Berapa banyak air yang keluar dari keran setiap detik? Besaran ini disebut debit.
+debit-01	Debit adalah volume dibagi waktu, satuannya meter kubik per detik.
+debit-02	Sebuah ember dua puluh liter penuh dalam empat puluh detik. Debitnya setengah liter per detik,
+debit-03	atau lima kali sepuluh pangkat minus empat meter kubik per detik.
+debit-04	Bayangkan air dalam pipa sebagai silinder yang terus didorong maju. Dalam satu detik, silinder sepanjang fe melewati penampang a.
+debit-05	Jadi debit sama dengan luas penampang kali kecepatan: ki sama dengan a fe.
+continuity-00	Kembali ke selang. Air tidak bisa dimampatkan dan tidak hilang di tengah jalan.
+continuity-01	Jadi setiap detik, volume yang masuk ke satu bagian pipa harus sama dengan volume yang keluar.
+continuity-02	Debit di mana pun sama: a satu kali fe satu sama dengan a dua kali fe dua. Inilah persamaan kontinuitas.
+continuity-03	Ujung selang seluas dua sentimeter persegi menyemburkan setengah liter per detik dengan kecepatan dua koma lima meter per detik.
+continuity-04	Tutup dengan jempol hingga lubangnya tinggal setengah sentimeter persegi. Luasnya empat kali lebih kecil,
+continuity-05	maka kecepatannya empat kali lebih besar: sepuluh meter per detik.
+continuity-06	Seperti kerumunan yang melewati pintu sempit: agar jumlah orang per detik tetap, setiap orang harus bergerak lebih cepat.
+pressurespeed-00	Air memang lebih cepat di bagian sempit. Tapi apa yang mempercepatnya?
+pressurespeed-01	Sebuah benda hanya bisa dipercepat oleh gaya total. Untuk sepotong fluida, gaya itu datang dari beda tekanan.
+pressurespeed-02	Saat memasuki bagian sempit, potongan air dipercepat. Artinya tekanan di belakangnya lebih besar daripada tekanan di depannya.
+pressurespeed-03	Jadi di bagian sempit yang cepat, tekanannya lebih rendah.
+pressurespeed-04	Itulah sebabnya dua lembar kertas merapat: udara cepat di antaranya bertekanan lebih rendah daripada udara diam di luar.
+pressurespeed-05	Bukan aliran yang menarik kertas. Udara luar yang bertekanan lebih tinggi mendorongnya ke dalam.
+bernoulli-00	Daniel Bernuli merangkum gagasan ini dalam satu persamaan, pada tahun seribu tujuh ratus tiga puluh delapan.
+bernoulli-01	Kuncinya adalah energi, yang sudah kita pelajari di video pertama seri ini.
+bernoulli-02	Setiap meter kubik fluida membawa tiga bentuk energi: energi tekanan pe,
+bernoulli-03	energi kinetik setengah ro fe kuadrat, dan energi potensial ro ge ha.
+bernoulli-04	Di sepanjang satu garis arus fluida ideal, jumlah ketiganya tetap.
+bernoulli-05	Jadi bila fluida dipercepat, energi kinetiknya naik, dan yang membayarnya adalah tekanan.
+bernoulli-06	Persamaan Bernuli adalah hukum kekekalan energi, ditulis untuk fluida yang mengalir.
+venturi-00	Pipa yang menyempit lalu melebar lagi disebut pipa Venturi.
+venturi-01	Air masuk pada pipa berdiameter empat sentimeter dengan kecepatan satu meter per detik.
+venturi-02	Di leher berdiameter dua sentimeter, luasnya empat kali lebih kecil, jadi kecepatannya empat meter per detik.
+venturi-03	Pipanya mendatar, jadi ro ge ha sama di kedua titik. Beda tekanannya setengah ro kali fe dua kuadrat dikurangi fe satu kuadrat:
+venturi-04	setengah kali seribu kali enam belas dikurangi satu, yaitu tujuh ribu lima ratus paskal.
+venturi-05	Tabung kecil di atasnya menunjukkan beda tinggi kolom air tujuh puluh lima sentimeter.
+venturi-06	Dari beda tinggi itu, kecepatan aliran bisa dihitung balik. Inilah venturimeter.
+torricelli-00	Sebuah tangki terbuka berlubang kecil di dindingnya, satu koma dua lima meter di bawah permukaan air.
+torricelli-01	Permukaan dan lubang sama-sama terbuka ke udara, jadi tekanannya sama. Permukaan airnya turun sangat lambat.
+torricelli-02	Persamaan Bernuli tinggal menyisakan ro ge ha sama dengan setengah ro fe kuadrat: fe sama dengan akar dua ge ha.
+torricelli-03	Akar dari dua kali sepuluh kali satu koma dua lima adalah lima meter per detik.
+torricelli-04	Sama persis dengan kecepatan batu yang jatuh bebas dari ketinggian yang sama. Inilah teorema Toriceli.
+torricelli-05	Bila lubang berada delapan puluh sentimeter di atas lantai, air melayang selama nol koma empat detik,
+torricelli-06	dan mendarat dua meter dari dinding tangki.
+torricelli-07	Makin dalam lubangnya, makin kencang semburannya, karena tekanan hidrostatis di sana makin besar.
+lift-00	Sekarang pesawat tadi. Sayap dibentuk dan dimiringkan sehingga membelokkan aliran udara ke bawah.
+lift-01	Udara di atas sayap mengalir lebih cepat dan bertekanan lebih rendah daripada udara di bawahnya.
+lift-02	Hati-hati dengan penjelasan populer yang keliru: udara atas dan bawah tidak harus tiba bersamaan di ujung sayap.
+lift-03	Kenyataannya, udara di atas sayap justru tiba lebih dulu.
+lift-04	Pesawat penumpang sekitar tujuh puluh ton dengan luas sayap sekitar seratus dua puluh meter persegi
+lift-05	hanya membutuhkan beda tekanan sekitar lima ribu delapan ratus paskal, kurang dari enam persen tekanan atmosfer.
+lift-06	Beda tekanan yang kecil, dikalikan luas yang besar, cukup untuk mengangkat tujuh puluh ton.
+viscosity-00	Fluida nyata punya gesekan dalam yang disebut kekentalan atau viskositas, diberi simbol eta.
+viscosity-01	Madu ribuan kali lebih kental daripada air, sehingga mengalir sangat lambat.
+viscosity-02	Di dalam pipa, fluida kental paling cepat di tengah dan diam di dinding. Profil kecepatannya berbentuk parabola.
+viscosity-03	Untuk aliran laminar, hukum Pwasey menyatakan debit sebanding dengan jari-jari pipa pangkat empat.
+viscosity-04	Perkecil jari-jari pipa menjadi setengahnya, dan debitnya turun enam belas kali.
+viscosity-05	Pada fluida kental, beda tekanan dibutuhkan hanya untuk menjaga aliran tetap berjalan.
+strategy-00	Bagaimana menaklukkan soal fluida dinamis? Gunakan urutan berpikir ini.
+strategy-01	Pertama, pilih dua titik pada garis arus yang sama, dan tentukan bidang acuan ketinggian.
+strategy-02	Kedua, cari kecepatan dengan kontinuitas. Ketiga, cari tekanan dengan Bernuli.
+strategy-03	Keempat, periksa satuan: sentimeter persegi ke meter persegi, liter per detik ke meter kubik per detik.
+strategy-04	Contoh: air mengalir di pipa lantai dasar dengan kecepatan dua meter per detik dan tekanan seratus lima puluh kilopascal.
+strategy-05	Pipa naik lima meter ke lantai dua dan luasnya menjadi setengah, jadi kecepatannya empat meter per detik.
+strategy-06	Tekanan di atas sama dengan seratus lima puluh ribu, dikurangi enam ribu untuk menambah kecepatan, dikurangi lima puluh ribu untuk menaikkan air.
+strategy-07	Hasilnya sembilan puluh empat kilopascal. Tekanan turun karena air harus dipercepat dan diangkat.
+aspirator-00	Di laboratorium kimia, penyaringan dengan corong Bukhner butuh hisapan agar cepat.
+aspirator-01	Alatnya sering sangat sederhana: pompa vakum air yang dipasang di keran.
+aspirator-02	Air dari keran dipaksa melewati nosel sempit dan menyembur sangat cepat.
+aspirator-03	Pancaran yang cepat itu bertekanan rendah, sehingga udara dari labu penyaring tersedot masuk dan ikut terbawa air.
+aspirator-04	Tekanan di labu turun, dan udara luar mendorong cairan menembus kertas saring.
+aspirator-05	Batas terendahnya kira-kira tekanan uap air, sekitar dua koma tiga kilopascal pada dua puluh derajat Celsius.
+aspirator-06	Karena itu air yang lebih dingin memberi vakum yang lebih baik.
+bunsen-00	Pembakar Bunsen memakai prinsip yang sama.
+bunsen-01	Gas keluar dari lubang kecil di dasar cerobong dengan kecepatan tinggi, sehingga tekanannya turun.
+bunsen-02	Udara luar terdorong masuk melalui lubang di cincin pengatur, lalu bercampur dengan gas sebelum terbakar.
+bunsen-03	Cincin dibuka, oksigen cukup: nyala biru yang panas dan bersih.
+bunsen-04	Cincin ditutup, oksigen kurang: nyala kuning berjelaga yang lebih dingin.
+bunsen-05	Tanpa kipas dan tanpa listrik, aliran gas itu sendiri yang menghisap udara.
+nebulizer-00	Pada spektrometer serapan atom, larutan sampel harus diubah menjadi kabut halus sebelum masuk ke nyala.
+nebulizer-01	Tugas ini dikerjakan oleh nebulizer.
+nebulizer-02	Aliran gas yang sangat cepat melewati ujung pipa kapiler yang tercelup dalam larutan sampel.
+nebulizer-03	Tekanan di ujung kapiler turun, sehingga larutan terhisap naik tanpa pompa.
+nebulizer-04	Di ujung kapiler, pancaran gas memecah cairan menjadi butiran-butiran sangat kecil.
+nebulizer-05	Prinsip yang sama bekerja pada botol semprot parfum dan alat nebulizer untuk pengobatan asma.
+viscometer-00	Kekentalan cairan bisa diukur dengan alat kaca sederhana: viskometer Ostwald.
+viscometer-01	Cairan dibiarkan mengalir turun melalui pipa kapiler, dan waktu alirnya dicatat dengan stopwatch.
+viscometer-02	Makin kental cairan, makin lama waktu alirnya. Makin besar massa jenisnya, makin kuat gravitasi mendorongnya.
+viscometer-03	Jadi kekentalan sebanding dengan massa jenis kali waktu alir, dan bisa dibandingkan dengan air.
+viscometer-04	Air mengalir dalam enam puluh detik. Cairan eks bermassa jenis delapan ratus mengalir dalam sembilan puluh detik.
+viscometer-05	Kekentalannya satu koma dua kali kekentalan air, sekitar satu koma dua milipascal sekon, mendekati etanol.
+blood-00	Darah mengalir di pembuluh yang bisa menyempit karena timbunan plak.
+blood-01	Di bagian yang menyempit, darah mengalir lebih cepat, dan menurut Bernuli tekanannya turun.
+blood-02	Tekanan dari luar dapat menekan dinding yang lemah itu hingga sesaat tertutup, lalu terbuka lagi: pembuluh bergetar.
+blood-03	Yang lebih berat adalah akibat hukum Pwasey. Jari-jari menyempit dua puluh persen saja,
+blood-04	debit darah tinggal sekitar empat puluh persen, bila beda tekanannya tetap.
+blood-05	Karena itu jantung harus memompa lebih keras, dan tekanan darah naik.
+ships-00	Dua kapal yang berlayar berdampingan terlalu dekat bisa saling tertarik.
+ships-01	Air di celah sempit di antara keduanya mengalir lebih cepat relatif terhadap kapal, sehingga tekanannya lebih rendah.
+ships-02	Air di sisi luar yang bertekanan lebih tinggi mendorong kedua kapal saling mendekat.
+ships-03	Pada tahun seribu sembilan ratus sebelas, kapal perang Hok tertarik dan menabrak lambung kapal Olimpik, kapal kembar Titanik.
+ships-04	Hal yang sama membuat kita harus berdiri di belakang garis kuning saat kereta cepat melintas.
+roof-00	Saat badai, angin kencang bertiup di atas atap rumah, sementara udara di dalam rumah hampir diam.
+roof-01	Udara cepat di atas atap bertekanan lebih rendah daripada udara di dalam.
+roof-02	Angin tiga puluh meter per detik, sekitar seratus delapan kilometer per jam, menghasilkan beda tekanan setengah ro fe kuadrat:
+roof-03	setengah kali satu koma dua kali sembilan ratus, sekitar lima ratus empat puluh paskal.
+roof-04	Kecil? Kalikan dengan atap seluas seratus meter persegi: lima puluh empat ribu newton ke atas, setara berat lebih dari lima ton.
+roof-05	Itulah sebabnya atap harus diikat kuat ke dinding, bukan hanya diletakkan di atasnya.
+recap-00	Mari rangkum.
+recap-01	Debit adalah luas kali kecepatan. Untuk fluida tak termampatkan debit di mana pun sama, jadi di bagian sempit aliran lebih cepat.
+recap-02	Bernuli adalah kekekalan energi: tekanan, ditambah setengah ro fe kuadrat, ditambah ro ge ha, tetap di sepanjang garis arus.
+recap-03	Di tempat aliran lebih cepat, tekanannya lebih rendah. Dari sinilah semburan Toriceli, venturimeter, dan gaya angkat sayap.
+recap-04	Fluida nyata punya kekentalan, dan debitnya sangat peka terhadap jari-jari pipa: pangkat empat.
+recap-05	Jadi, setiap kali melihat sesuatu mengalir, tanyakan: di mana alirannya cepat, dan ke mana tekanan mendorongnya?
